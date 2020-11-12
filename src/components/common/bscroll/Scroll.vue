@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     refresh() {
-      console.log('---');
+      // console.log('---');
       this.scroll && this.scroll.refresh()
     },
     scrollTo(x, y, time = 500) {
@@ -72,6 +72,9 @@ export default {
     },
     pullUpFinish(){
       this.scroll && this.scroll.finishPullUp()
+    },
+    getScrollY(){
+      return this.scroll.y
     }
   }
 }

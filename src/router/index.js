@@ -5,35 +5,40 @@ const Home = () => import('@/views/home/Home')
 const Category = () => import('@/views/category/Category')
 const Cart = () => import('@/views/cart/Cart')
 const Proflie = () => import('@/views/profile/Profile')
+const Details = () => import('@/views/details/Details')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path:'',
-    redirect:'/home'
+    path: '',
+    redirect: '/home'
   },
   {
-    path:'/home',
+    path: '/home',
     component: Home
   },
   {
-    path:'/category',
+    path: '/category',
     component: Category
   },
   {
-    path:'/cart',
+    path: '/cart',
     component: Cart
   },
   {
-    path:'/profile',
+    path: '/profile',
     component: Proflie
   },
+  {
+    path: '/detail/:iid',
+    component: Details
+  }
 ]
 
 const router = new VueRouter({
   routes,
-  mode:'history'
+  mode: 'history'
 })
 
 export default router

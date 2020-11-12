@@ -83,8 +83,17 @@ export default {
       goodsIndex: 0,
       IsBackTopShow: false,
       offsetTop: 0,
-      isShowTabBar:false
+      isShowTabBar:false,
+      scrollY:0
     }
+  },
+  activated() {
+    this.$refs.scroll.scrollTo(0,this.scrollY,0)
+    this.$refs.scroll && this.$refs.scroll.refresh()
+  },
+  deactivated() {
+    this.scrollY = this.$refs.scroll.getScrollY();
+    // console.log(this.scrollY);
   },
   //组件创建时请求数据
   created() {
@@ -111,7 +120,7 @@ export default {
     //应待tabBar上面的元素加载完之后
     this.$bus.$on('BannerLoad', () => {
       // console.log(this.$refs.tabBar.$el.offsetTop);
-      this.offsetTop = this.$refs.tabBar.$el.offsetTop
+      if(this.$refs.tabBar) this.offsetTop = this.$refs.tabBar.$el.offsetTop
     })
   },
   methods: {

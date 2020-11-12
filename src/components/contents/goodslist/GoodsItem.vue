@@ -1,8 +1,6 @@
 <template>
   <div class="goods-item">
-    <a :href="goodItem.link">
-      <img :src="goodItem.show.img" alt="" @load="ImgLoad">
-    </a>
+      <img :src="goodItem.show.img" alt="" @load="ImgLoad" @click="itemClick">
     <div class="good-text">
       <span :title="goodItem.title">{{ goodItem.title }}</span>
       <span>{{ goodItem.cfav }}</span>
@@ -24,6 +22,9 @@ export default {
   methods:{
     ImgLoad(){
       this.$bus.$emit('ImgLoadFinish')
+    },
+    itemClick(){
+      this.$router.push('/detail/' + this.goodItem.iid)
     }
   }
 }

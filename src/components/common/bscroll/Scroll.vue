@@ -27,12 +27,17 @@ export default {
       default() {
         return false
       }
+    },
+    click:{
+      type:Boolean,
+      default(){
+        return true
+      }
     }
   },
   data() {
     return {
       scroll: null,
-
     }
   },
   mounted() {
@@ -43,7 +48,7 @@ export default {
     this.scroll = new BScroll(this.$refs.wrapper, {
       scrollbar: true,
       // wheel: true,
-      click: true,
+      click: this.click,
       probeType: this.probeType,
       pullUpLoad: this.pullingUpLoad
     })

@@ -47,14 +47,13 @@ export default {
 
 .good-text {
   padding: 0.5em;
-  font-size: var(--font-size);
+  font-size: 15px;
 
 }
 
 .good-text span:nth-of-type(1) {
   display: block;
   color: pink;
-  font-size: 1px;
   width: 98%;
   white-space: nowrap;
   text-overflow: ellipsis;

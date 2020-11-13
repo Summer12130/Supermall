@@ -34,7 +34,7 @@ export default {
   methods:{
     BannerLoad(){
       if (!this.IsLoad){
-        this.$bus.$emit('BannerLoad')
+        this.$bus.$emit('HomeBannerLoad')
         this.IsLoad = true
         // console.log('图片加载了');
       }

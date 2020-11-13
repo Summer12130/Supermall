@@ -11,7 +11,8 @@
              v-show="isShowTabBar"
     >
     </tab-bar>
-    <scroll class="content" ref="scroll"
+    <scroll class="content"
+            ref="scroll"
             :probe-type="3"
             @BackTopShow="BackTopShow"
             :pulling-up-load="true"
@@ -97,12 +98,15 @@ export default {
   },
   //组件创建时请求数据
   created() {
+    // console.log(this.$refs.scroll);
     //第一次请求
     this.getHomeMultiData()
     //第二次请求
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
+
+
 
 
   },
@@ -118,10 +122,13 @@ export default {
     //tabControl的监听
     // console.log(this.$refs.tabBar.$el.offsetTop);
     //应待tabBar上面的元素加载完之后
-    this.$bus.$on('BannerLoad', () => {
+    this.$bus.$on('HomeBannerLoad', () => {
+      // console.log('home监听到了');
       // console.log(this.$refs.tabBar.$el.offsetTop);
       if(this.$refs.tabBar) this.offsetTop = this.$refs.tabBar.$el.offsetTop
     })
+    // console.log(this.$refs.scroll);
+    this.$refs.scroll && this.$refs.scroll.refresh()
   },
   methods: {
     /*

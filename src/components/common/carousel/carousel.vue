@@ -1,5 +1,5 @@
 <template>
-    <el-carousel :interval="5000" arrow="always" height="195px" class="Carousel-box">
+    <el-carousel :interval="5000" :arrow="arrow" :indicator-position="indicator" :height="height" class="Carousel-box">
      <slot></slot>
     </el-carousel>
 </template>
@@ -8,7 +8,27 @@
 export default {
   name: "carousel",
   data(){
-
+    return {}
+  },
+  props:{
+    arrow:{
+      type:String,
+      default(){
+        return 'always'
+      }
+    },
+    indicator:{
+      type:String,
+      default() {
+        return "none";
+      }
+    },
+    height:{
+      type:String,
+      default(){
+        return '195px'
+      }
+    }
   },
   methods:{
 
@@ -29,6 +49,7 @@ export default {
   opacity: 0.75;
   line-height: 300px;
   margin: 0;
+
 }
 
 .el-carousel__item:nth-child(2n) {

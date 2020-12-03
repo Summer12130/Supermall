@@ -9,6 +9,12 @@ export function getDetail(iid) {
   })
 }
 
+export function getRecommend() {
+  return request({
+    url:'/recommend'
+  })
+}
+
 export class itemInfo {
   constructor(itemInfo, columns, extra) {
     this.title = itemInfo.title
@@ -18,6 +24,8 @@ export class itemInfo {
     this.discountBgColor = itemInfo.discountBgColor
     this.columns = columns
     this.deliveryTime = extra.deliveryTime
+    this.realPrice = itemInfo.lowNowPrice
+    this.desc = itemInfo.desc
   }
 }
 
@@ -34,8 +42,23 @@ export class shopInfo {
 }
 
 export class detailInfo {
-  constructor(detailInfo) {
+  constructor(detailInfo, Key, Image) {
     this.desc = detailInfo.desc
-    this.detailImage = detailInfo.detailImage
+    this.key = Key
+    this.detailImage = Image
   }
 }
+
+export class paramInfo {
+  constructor(itemParams) {
+    this.info = itemParams.info
+    this.rule = itemParams.rule
+  }
+}
+
+export class remarkInfo {
+  constructor(rate) {
+    this.list = rate.list
+  }
+}
+

@@ -34,6 +34,7 @@ export default {
   methods:{
     IndexChange(index){
       this.currentIndex = index
+      this.$emit('dNavBarChange',index)
     },
     BackToHome(){
       this.$router.back();

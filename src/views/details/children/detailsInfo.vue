@@ -1,11 +1,12 @@
 <template>
   <div id="detailInfo">
     <p class="desc">{{ dDetailInfo.desc }}</p>
-    <div class="detail" v-if="dDetailInfo.detailImage">
-      <p>{{ dDetailInfo.detailImage[0].key }}</p>
+    <div class="detail" v-if="dDetailInfo">
+      <span v-for="(items,index1) in dDetailInfo.key"
+            :key="index1">{{ items }}</span>
       <img :src="'http:'+item"
            alt=""
-           v-for="(item,index) in dDetailInfo.detailImage[0].list"
+           v-for="(item,index) in dDetailInfo.detailImage"
            class="detailImg"
            @load="detailImageLoad">
     </div>
@@ -23,10 +24,28 @@ export default {
       }
     }
   },
-  methods:{
-    detailImageLoad(){
-      this.$bus.$emit('detailImageLoad')
+  data() {
+    return {
+      imgCount: 0,
+      ModelImagesLength:0
     }
+  },
+  methods: {
+    detailImageLoad() {
+      if (++this.imgCount == this.ModelImagesLength){
+        this.$bus.$emit('detailImageLoad')
+      }
+
+    }
+  },
+  watch:{
+    dDetailInfo(){
+      this.ModelImagesLength = this.dDetailInfo.detailImage.length
+    }
+  },
+  created() {
+
+
   }
 }
 </script>
@@ -40,11 +59,11 @@ export default {
   margin-top: 10px;
 }
 
-.detail p {
-  text-align: center;
-  margin: 10px auto;
-  font-size: 25px;
+.detail span {
+  display: inline-block;
+  font-size: 20px;
   color: #ff5777;
+  padding: 10px 15px;
 }
 
 .detail img {

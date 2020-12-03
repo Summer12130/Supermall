@@ -53,18 +53,22 @@ export default {
       pullUpLoad: this.pullingUpLoad
     })
 
-    //监听滚动事件
-    this.scroll.on('scroll', (position) => {
-      // console.log(position);
-      this.$emit('BackTopShow', position)
-    })
-    //上拉加载更多
-    this.scroll.on('pullingUp',() => {
+    if (this.probeType === 3){
+      //监听滚动事件
+      this.scroll.on('scroll', (position) => {
+        // console.log(position);
+        this.$emit('BackTopShow', position)
+        this.$emit('scroll', position)
+      })
+    }
+    if (this.pullingUpLoad){
+      //上拉加载更多
+      this.scroll.on('pullingUp',() => {
 
-      this.$emit('LoadMore')
+        this.$emit('LoadMore')
 
-
-    })
+      })
+    }
 
   },
   methods: {
